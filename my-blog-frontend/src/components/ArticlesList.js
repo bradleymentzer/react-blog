@@ -10,7 +10,6 @@ const ArticlesList = ({ articles }) => (
         to={`/article/${article.name}`}
       >
         <h3>{article.title}</h3>
-        {/* Links to the article content and displays the first 150 characters */}
         <p>{article.content[0].substring(0, 150)}...</p>
       </Link>
     ))}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ArticlesList from "../components/ArticlesList";
 import CommentsList from "../components/CommentsList";
+import UpvotesSection from "../components/UpvoteSection";
+import NotFoundPage from "./NotFoundPage";
 import articleContent from "./article-content";
 
 const ArticlePage = ({ match }) => {
@@ -23,7 +25,7 @@ const ArticlePage = ({ match }) => {
     fetchData();
   }, [name]);
 
-  if (!article) return <h1>Article does not exist!</h1>;
+  if (!article) return <NotFoundPage />;
 
   //Display comments
   <CommentsList comments={articleInfo.comments} />;
@@ -36,7 +38,11 @@ const ArticlePage = ({ match }) => {
   return (
     <>
       <h1>{article.title}</h1>
-      <p>This article has been upvoted {articleInfo.upvotes} times.</p>
+      <UpvotesSection
+        articleName={name}
+        upvotes={articleInfo.upvotes}
+        setArticleInfo={setArticleInfo}
+      />
       {article.content.map((paragraph, key) => (
         <p key={key}>{paragraph}</p>
       ))}
