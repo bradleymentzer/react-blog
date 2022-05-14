@@ -1,4 +1,3 @@
 {
-
-"presets": [@babel/preset-env]
+    "presets": ["@babel/preset-env"]//transform ES6 code to common JS that node.js can execute
 }
