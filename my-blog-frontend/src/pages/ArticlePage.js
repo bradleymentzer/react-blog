@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ArticlesList from "../components/ArticlesList";
+import CommentsList from "../components/CommentsList";
 import articleContent from "./article-content";
 
 const ArticlePage = ({ match }) => {
@@ -23,6 +24,9 @@ const ArticlePage = ({ match }) => {
   }, [name]);
 
   if (!article) return <h1>Article does not exist!</h1>;
+
+  //Display comments
+  <CommentsList comments={articleInfo.comments} />;
 
   //does not display current article in other articles section
   const otherArticles = articleContent.filter(
